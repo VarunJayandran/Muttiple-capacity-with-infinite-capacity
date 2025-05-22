@@ -19,11 +19,53 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 ## Experiment:
 
+![446115601-663609ea-d27f-4a74-a4e5-79649f23d92c](https://github.com/user-attachments/assets/6c665659-8aa6-4067-b1aa-79d11527f89c)
+
+![446115700-74186bec-e7e0-4ac7-89f4-b96fb236b7d7](https://github.com/user-attachments/assets/1a5db527-6006-41e5-be01-c72caf86d5c4)
+
 
 ## Program
+```PYTHON
+#Developed by : VARUN J C
+#Register No: 212224240179
+import math
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time=float(input("Enter the mean  inter service time of Lathe Machine (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+c=int(input("Number of service centre :  "))
+lam=1/arr_time
+mu=1/(ser_time+Robot_time)
+print("--------------------------------------------------------------")
+print("Multiple Server with Infinite Capacity - (M/M/c):(oo/FIFO)")
+print("--------------------------------------------------------------")
+print("The mean arrival rate per second : %0.2f "%lam)
+print("The mean service rate per second : %0.2f "%mu)
+rho=lam/(c*mu)
+sum=(lam/mu)**c*(1/(1-rho))/math.factorial(c)
+for i in range(0,c):
+    sum=sum+(lam/mu)**i/math.factorial(i)
+P0=1/sum
+if (rho<1):
+    Lq=(P0/math.factorial(c))*(1/c)*(lam/mu)**(c+1)/(1-rho)**2
+    Ls=Lq+lam/mu
+    Ws=Ls/lam
+    Wq=Lq/lam
+    print("Average number of objects in the system : %0.2f "%Ls)
+    print("Average number of objects in the conveyor :  %0.2f "%Lq)
+    print("Average waiting time of an object in the system : %0.2f secs"%Ws)
+    print("Average waiting time of an object in the conveyor : %0.2f secs"%Wq)
+    print("Probability that the system is busy : %0.2f "%(rho))
+    print("Probability that the system is empty : %0.2f "%(1-rho))
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("--------------------------------------------------------------")
 
-
+```
 ## Output :
+
+
+![446116162-4406df67-5b7c-4025-b19d-625fd8f9587e](https://github.com/user-attachments/assets/ea21b4be-2307-4df9-8b1b-d216dc11ef80)
 
 ## Result : 
 
+Thus the average number of materials in the system and conveyor, waiting time of each material in the system and conveyor is found successfully.
